@@ -1,0 +1,7 @@
+- name: Install&start httpd
+  hosts: nodes1
+  tasks:
+    - name: Install httpd with yum
+      yum: name=httpd state=latest
+    - name: Start httpd with service
+      service: name=httpd state=started

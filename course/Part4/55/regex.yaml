@@ -1,7 +1,7 @@
 - name: Regex, replace
   hosts: nodes
   tasks:
-    - name: replace
+    - name: Replace
       replace:
         path: /opt/ansible.txt
         regexp: "hello"

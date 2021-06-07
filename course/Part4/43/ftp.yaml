@@ -1,7 +1,7 @@
-- name: install ftp
+- name: Install ftp package with yum
   hosts: nodes
   tasks:
-    - name: install ftp package with yum
+    - name: Install ftp package
       yum:
         name: ftp*
         state: present

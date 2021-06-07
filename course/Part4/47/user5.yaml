@@ -1,7 +1,7 @@
 - name: Remove user
   hosts: nodes1
   tasks:
-    - name: remove user
+    - name: Remove user
       user:
         name: 'massa'
         state: absent

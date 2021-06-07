@@ -1,7 +1,7 @@
 - name: Condition 11
   hosts: nodes1
   tasks:
-    - name: restart
+    - name: Restart
       register: httpdout
       become: yes
       command: "httpd -k restart"

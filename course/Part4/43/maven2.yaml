@@ -1,5 +1,5 @@
 - name: Remove maven
   hosts: nodes1
   tasks:
-    - name: remove maven with yum
+    - name: Remove maven with yum
       yum: name=maven state=removed

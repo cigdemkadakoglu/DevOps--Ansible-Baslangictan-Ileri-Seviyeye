@@ -1,7 +1,7 @@
 - name: Change the hostname
   hosts: nodes1
   tasks:
-    - name: change
+    - name: Change hostname
       hostname:
         name: managed-node1
       register: changeHostname

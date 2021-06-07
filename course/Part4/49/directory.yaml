@@ -4,7 +4,7 @@
   become_method: sudo
   become_user: root
   tasks:
-    - name: directory
+    - name: Create a directory
       file:
         owner: root
         group: daemon

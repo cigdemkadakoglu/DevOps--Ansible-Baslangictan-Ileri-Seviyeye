@@ -1,5 +1,5 @@
 - name: Remove Git
   hosts: nodes2
   tasks:
-    - name: remove git with yum
+    - name: Remove Git with yum
       yum: name=git state=absent
