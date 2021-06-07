@@ -1,0 +1,9 @@
+- name: Condition 5
+  hosts: nodes
+  vars:
+    tool: "Jenkins"
+  tasks:
+    - debug:
+        msg: "{{ tool }} is my everything"
+      when: tool == "Jenkins" or 1 == 0
+    # when: tool == "Jenkins" and 1 == 1

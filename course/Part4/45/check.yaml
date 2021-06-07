@@ -1,0 +1,8 @@
+- name: Check mode
+  hosts: nodes1
+  tasks:
+    - name: Create a file
+      ansible.builtin.file:
+        state: touch
+        path: /tmp/fileCheck
+  check_mode: yes

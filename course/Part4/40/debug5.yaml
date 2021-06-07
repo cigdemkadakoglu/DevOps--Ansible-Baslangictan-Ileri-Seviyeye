@@ -1,0 +1,13 @@
+- name: Debug message 5
+  hosts: nodes
+  become: yes
+  become_method: sudo
+  become_user: root
+  vars:
+    dictionary:
+      user1: Cigdem
+      user2: Berk
+      user3: Ela
+  tasks:
+    - name: Debug msg
+      debug: var=dictionary

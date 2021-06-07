@@ -1,0 +1,9 @@
+- name: Git clone
+  hosts: nodes1
+  tasks:
+    - name: Git clone from public repo
+      git:
+        repo: https://github.com/cidokimi/k8s-docker.git
+        dest: /opt/gitrepo
+#     version: 1.0.0.0
+#     archive: /tmp/git.zip

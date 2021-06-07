@@ -1,0 +1,9 @@
+- name: Ignore Example
+  hosts: all
+  ignore_unreachable: yes
+  tasks:
+    - name: Execute&Fail&Fail ignored
+      ansible.builtin.command: /bin/true
+    - name: Execute&Fail&End
+      ansible.builtin.command: /bin/true
+      ignore_unreachable: no

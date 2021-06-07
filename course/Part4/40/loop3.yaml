@@ -1,0 +1,8 @@
+- name: Install package with loop2
+  hosts: nodes2
+  become: true
+  tasks:
+    - name: Install packages
+      yum:
+        name: ['vim', 'git', 'curl']
+        state: latest

@@ -1,0 +1,18 @@
+- name: Create new users and uid with loop
+  hosts: nodes1
+  become: yes
+  become_user: root
+  become_method: sudo
+  tasks:
+    - name: Create new users
+      user:
+        name: '{{ item.name }}'
+        uid: '{{ item.uid }}'
+        state: present
+      loop:
+        - name: massa
+          uid: 1020
+        - name: hamilton
+          uid: 1030
+        - name: alonso
+          uid: 1040

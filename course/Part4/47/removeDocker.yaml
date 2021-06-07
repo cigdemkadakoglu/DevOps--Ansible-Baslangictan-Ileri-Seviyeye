@@ -1,0 +1,21 @@
+- name: Remove Docker&components
+  hosts: nodes
+  become: true
+  become_user: root
+  become_method: sudo
+  tasks:
+    - name: Remove Docker
+      yum:
+        name:
+          - docker
+          - docker-client
+          - docker-client-latest
+          - docker-common
+          - docker-latest
+          - docker-latest-logrotate
+          - docker-logrotate
+          - docker-engine
+          - docker-ce-cli
+          - docker-ce
+          - docker-selinux
+        state: removed

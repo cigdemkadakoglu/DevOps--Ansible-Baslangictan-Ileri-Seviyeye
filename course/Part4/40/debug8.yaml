@@ -1,0 +1,8 @@
+- name: Debug message 8
+  hosts: nodes
+  tasks:
+    - name: Execute uname s command
+      command: "uname -s"
+      register: unamesout
+    - debug:
+        msg: "{{ unamesout.stdout }}"

@@ -1,0 +1,13 @@
+- name: Debug message 4
+  hosts: nodes
+  become: yes
+  become_method: sudo
+  become_user: root
+  vars:
+    array:
+      - Cigdem
+      - Kimi
+  tasks:
+    - name: Debug msg
+      debug:
+        msg: "{{ array[1] }}"

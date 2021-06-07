@@ -1,0 +1,12 @@
+- name: Debug message 2
+  hosts: nodes
+  become: yes
+  become_method: sudo
+  become_user: root
+  tasks:
+    - name: Debug msg
+      debug:
+        msg:
+          - "A"
+          - "B"
+          - "C"

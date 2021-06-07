@@ -1,0 +1,5 @@
+- name: Add a epel-release repo
+  hosts: all
+  tasks:
+    - name: Add repo
+      yum: name=epel-release state=present

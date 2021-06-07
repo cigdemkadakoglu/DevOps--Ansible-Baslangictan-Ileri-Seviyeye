@@ -1,0 +1,19 @@
+- name: Debug message 6
+  hosts: nodes
+  become: yes
+  become_method: sudo
+  become_user: root
+  vars:
+    users:
+      user1: Cigdem
+      user2: Berk
+      user3: Ela
+    flowers:
+      flower1: Rose
+      flower2: Crocus
+  tasks:
+    - name: Debug msg
+      debug: var="{{ item }}"
+      loop:
+        - 'users'
+        - 'flowers'

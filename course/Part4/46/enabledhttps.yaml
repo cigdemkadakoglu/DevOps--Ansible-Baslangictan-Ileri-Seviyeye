@@ -1,0 +1,12 @@
+- name: Enabled http&https
+  hosts: nodes2
+  tasks:
+    - name: Open port 80&443
+      firewalld:
+        service: "{{ item }}"
+        permanent: yes
+        immediate: yes
+        state: enabled
+      with_items:
+        - http
+        - https

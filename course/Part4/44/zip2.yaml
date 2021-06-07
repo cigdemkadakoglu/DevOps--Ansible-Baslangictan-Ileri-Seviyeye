@@ -1,0 +1,10 @@
+- name: Zip example 2
+  hosts: nodes1
+  tasks:
+    - name: zip file&directory
+      archive:
+        path:
+          - /opt/docker
+          - /opt/ansible/ansible.txt
+        dest: /tmp/mix.zip
+        format: zip

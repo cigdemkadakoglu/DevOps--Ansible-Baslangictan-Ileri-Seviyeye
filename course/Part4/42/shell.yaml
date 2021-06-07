@@ -1,0 +1,9 @@
+- name: Shell command with date
+  hosts: nodes
+  tasks:
+    - name: Shell command
+      shell:
+        "date"
+      register: dateout
+      tags: dateout
+    - debug: msg= "{{ dateout.stdout_lines }}"

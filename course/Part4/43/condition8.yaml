@@ -1,0 +1,10 @@
+- name: Condition 8
+  hosts: nodes1
+  tasks:
+    - name: List files of directory
+      ansible.builtin.command: ls /opt/abc
+      register: filesout
+    - name: Check files if it is empty or not
+      ansible.builtin.debug:
+        msg: "abc is empty"
+      when: filesout.stdout == ""

@@ -1,0 +1,9 @@
+- name: Debugger Example 3
+  hosts: nodes
+  debugger: on_failed
+  gather_facts: no
+  vars:
+    data1: Hello
+  tasks:
+    - name: Variable example
+      ansible.builtin.ping: data={{ data2 }}

@@ -1,0 +1,5 @@
+- name: Remove wget
+  hosts: nodes1
+  tasks:
+    - name: Remove wget with yum
+      yum: name=wget stated=removed

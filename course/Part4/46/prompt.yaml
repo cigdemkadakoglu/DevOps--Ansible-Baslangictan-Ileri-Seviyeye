@@ -1,0 +1,10 @@
+- name: Prompt Example
+  hosts: nodes1
+  vars_prompt:
+    - name: username
+      prompt: What is your name?
+      private: no
+  tasks:
+    - name: Print a message
+      ansible.builtin.debug:
+        msg: 'Logging in as {{ username }}'

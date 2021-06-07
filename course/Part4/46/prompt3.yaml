@@ -1,0 +1,11 @@
+- name: Deployment Version
+  hosts: nodes1
+  vars_prompt:
+    - name: version
+      prompt: Deployment Version
+      default: "1.0.0.0"
+      private: no
+  tasks:
+    - name: Version
+      ansible.builtin.debug:
+        msg: 'Version number is: {{ version }}'

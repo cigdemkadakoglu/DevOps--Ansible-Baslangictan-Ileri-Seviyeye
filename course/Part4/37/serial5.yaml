@@ -1,0 +1,11 @@
+- name: Serial Keyword Example 5
+  hosts: all
+  serial:
+    - 1
+    - "30%"
+    - 5
+  tasks:
+    - name: 1st task
+      command: "echo 1"
+    - name: 2nd task
+      command: "echo 2"

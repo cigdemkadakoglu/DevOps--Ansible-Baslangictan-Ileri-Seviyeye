@@ -1,0 +1,8 @@
+- name: Condition 7
+  hosts: nodes
+  vars:
+    var: 25
+  tasks:
+    - debug:
+        msg: "{{ var }}"
+      when: var%5 == 0

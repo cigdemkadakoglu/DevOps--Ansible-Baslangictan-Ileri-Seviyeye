@@ -1,0 +1,13 @@
+- name: File validation
+  hosts: nodes2
+  tasks:
+    - name: Create a file if it doesn't exist
+      file:
+        path: "/tmp/newfile"
+        state: directory
+      register: createout
+    - name: Show the file
+      command: "ls /tmp/newfile"
+      register: showout
+      when: createout is changed
+    - debug: var=showout.stdout

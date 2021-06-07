@@ -1,0 +1,11 @@
+- name: Debug message 3
+  hosts: nodes
+  become: yes
+  become_method: sudo
+  become_user: root
+  vars:
+    var1: Hello World!
+  tasks:
+    - name: Debug msg
+      debug:
+        msg: "{{ var1 }}"

@@ -1,0 +1,12 @@
+- name: Debug message 10
+  hosts: nodes1
+  tasks:
+    - name: indexes with loop
+      debug:
+        msg: "The programming language at {{ item.0 }} is {{ item.1 }}"
+      with_indexed_items:
+        - "C"
+        - "Python"
+        - "Java"
+        - "C#"
+        - "Golang"

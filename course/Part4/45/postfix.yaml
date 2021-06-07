@@ -1,0 +1,13 @@
+- name: install&enabled postfix service
+  hosts: nodes
+  gather_facts: false
+  tasks:
+    - name: install postfix with yum
+      yum:
+        name: postfix*
+        state: installed
+    - name: Restart&enabled postfix
+      service:
+        name: postfix
+        state: restarted
+        enabled: yes

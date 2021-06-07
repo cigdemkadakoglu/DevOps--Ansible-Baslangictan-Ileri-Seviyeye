@@ -1,0 +1,16 @@
+- name: Module Defaults
+  hosts: nodes2
+  module_defaults:
+    ansible.builtin.file:
+      owner: root
+      group: daemon
+      mode: 755
+  tasks:
+    - name: Create a file1
+      ansible.builtin.file:
+        state: touch
+        path: /tmp/file1
+    - name: Create a file2
+      ansible.builtin.file:
+        state: touch
+        path: /tmp/file2

@@ -1,0 +1,16 @@
+- name: Copy multiple files with different permissions
+  become: true
+  hosts: nodes2
+  become_method: sudo
+  become_user: root
+  tasks:
+    - name: Copy files
+      copy:
+        remote_src: yes
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        mode: "{{ item.mode }}"
+      with_items:
+        - {src: '/opt/ansible/ans1', dest: '/tmp/ans1', mode: '777' }
+        - {src: '/opt/ansible/ans2', dest: '/tmp/ans2', mode: '707' }
+        - {src: '/opt/ansible/ans3', dest: '/tmp/ans3', mode: '666' }

@@ -1,0 +1,8 @@
+- name: Condition 1
+  hosts: nodes
+  become_method: sudo
+  become_user: root
+  tasks:
+    - name: Shutdown server if it is debian based system
+      command: /sbin/shutdown -t now
+      when: ansible_os_family == "Debian"

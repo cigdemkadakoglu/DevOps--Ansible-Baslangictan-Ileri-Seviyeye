@@ -1,0 +1,13 @@
+- name: Install pip
+  hosts: nodes2
+  become_method: sudo
+  become_user: root
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: Install pip
+      yum: name=python-pip state=latest
+    - name: Install python-devel
+      yum: name=python-devel state=latest
+    - name: Install Development-tools
+      yum: name='@development tools' state=latest

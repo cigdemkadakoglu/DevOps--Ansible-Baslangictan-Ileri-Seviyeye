@@ -1,0 +1,9 @@
+- name: Zip example 1
+  hosts: nodes1
+  tasks:
+    - name: Zip directory
+      archive:
+        path:
+          - /opt/docker
+        dest: /opt/docker.zip
+        format: zip

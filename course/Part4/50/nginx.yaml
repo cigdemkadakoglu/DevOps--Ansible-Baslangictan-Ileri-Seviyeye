@@ -1,0 +1,28 @@
+- name: Install NGINX
+  hosts: nodes1
+  tasks:
+    - name: Add epel-release repo
+      yum:
+        name: epel-release
+        state: present
+    - name: Install NGINX
+      yum:
+        name: nginx
+        state: present
+    - name: Copy nginx.conf file
+      copy:
+        src: nginx.conf
+        dest: /etc/nginx/nginx.conf
+    - name: Open port 8083 for http access
+      firewalld:
+        permanent: true
+        state: disabled
+        port: 8083/tcp
+    - name: Insert index.html
+      template:
+        src: index.html
+        dest: /usr/share/nginx/html/index.html
+    - name: Start NGINX
+      service:
+        name: nginx
+        state: restarted

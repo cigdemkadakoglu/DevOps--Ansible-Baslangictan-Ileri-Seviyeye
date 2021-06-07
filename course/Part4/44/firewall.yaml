@@ -1,0 +1,9 @@
+- name: Firewall Rules for zone&port
+  hosts: nodes2
+  tasks:
+    - name: Zone&Port
+      firewalld:
+        permanent: yes
+        state: enabled
+        zone: public
+        port: 8081/tcp

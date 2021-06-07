@@ -1,0 +1,10 @@
+- name: Condition 11
+  hosts: nodes1
+  tasks:
+    - name: restart
+      register: httpdout
+      become: yes
+      command: "httpd -k restart"
+      when: ansible_hostname=="managed-node"
+    - debug:
+        var: httpdout.stdout_lines

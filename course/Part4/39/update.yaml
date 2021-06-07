@@ -1,0 +1,10 @@
+- name: Perform yum update
+  hosts: all
+  become: true
+  become_method: sudo
+  beocme_user: root
+  tasks:
+    - name: yum update for all packages
+      yum:
+        name: '*'
+        state: latest

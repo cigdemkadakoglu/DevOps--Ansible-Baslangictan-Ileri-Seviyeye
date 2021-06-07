@@ -1,0 +1,7 @@
+- name: Condition 9
+  hosts: nodes
+  tasks:
+    - name: item greater than 5
+      ansible.builtin.command: echo {{ item }}
+      loop: [1,2,3,4,5,6,7,8,9,10]
+      when: item > 5

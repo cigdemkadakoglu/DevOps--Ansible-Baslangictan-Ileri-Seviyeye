@@ -1,0 +1,10 @@
+- name: Firewall Rule for udp port
+  hosts: nodes2
+  tasks:
+    - name: Disabled udp port
+      firewalld:
+        permanent: yes
+        immediate: yes
+        state: disabled
+        zone: internal
+        port: 102

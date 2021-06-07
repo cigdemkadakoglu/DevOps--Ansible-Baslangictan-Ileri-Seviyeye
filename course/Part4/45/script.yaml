@@ -1,0 +1,5 @@
+- name: Execute script
+  hosts: nodes
+  tasks:
+    - name: script
+      script: testscript.sh

@@ -1,0 +1,14 @@
+- name: Enabled&Disabled Selinux
+  hosts: nodes2
+  become: true
+  become_method: sudo
+  become_user: root
+  tasks:
+    - name: Enabled Selinux
+      selinux:
+        policy: targeted
+        state: enforcing
+    - name: Disabled Selinux
+      selinux:
+        policy: targeted
+        state: disabled

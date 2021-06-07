@@ -1,0 +1,8 @@
+- name: Zip example 5
+  hosts: nodes1
+  tasks:
+    - name: Unarchive file
+      unarchive:
+        src: /tmp/mix.zip
+        dest: /tmp/mix
+        remote_src: yes

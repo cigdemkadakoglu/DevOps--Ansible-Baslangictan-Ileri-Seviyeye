@@ -1,0 +1,16 @@
+- name: Install golang
+  hosts: nodes1
+  tasks:
+    - name: Download Golang
+      get_url:
+        url: https://dl.google.com/go/go1.13.linux-amd64.tar.gz
+        dest: /tmp/go1.13.linux-amd64.tar.gz
+    - name: Extract Go
+      command: tar xvf /tmp/go1.13.linux-amd64.tar.gz -C /usr/local
+    - name: Update profile
+      copy: content="export GO_HOME=/usr/local/go \n" dest=/etc/profile.d/go.sh
+    - lineinfile:
+        path: /etc/profile.d/go.sh
+        line: 'export PATH=${GO_HOME}/bin:${PATH}'
+    - name: Source profile
+      shell: source /etc/profile.d/go.sh

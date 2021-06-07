@@ -1,0 +1,19 @@
+- name: Create&copy file
+  hosts: nodes
+  become: true
+  become_method: sudo
+  become_user: root
+  tasks:
+    - name: Create a file
+      file:
+        path: "/tmp/file2.txt"
+        state: touch
+        mode: 777
+    - name: Copy file.txt into root directory
+      copy:
+        src: /tmp/file2.txt
+        dest: /root/file.txt
+        remote_src: false
+        owner: root
+        group: root
+        mode: 644

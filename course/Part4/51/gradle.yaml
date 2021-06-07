@@ -1,0 +1,20 @@
+- name: Install Gradle
+  hosts: nodes1
+  tasks:
+    - name: Download Gradle Zip
+      get_url:
+        url: https://services.gradle.org/distributions/gradle-5.6.2-bin.zip
+        dest: /tmp/gradle-5.6.2-bin.zip
+    - name: Create a directory
+      file:
+        path: /opt/gradle
+        state: directory
+    - name: Unzip Gradle
+      command: unzip -d /opt/gradle /tmp/gradle-5.6.2-bin.zip
+    - name: Update Profile
+      copy: content="export GRADLE_HOME=/opt/gradle/gradle-5.6.2 \n" dest=/etc/profile.d/gradle.sh
+    - lineinfile:
+        path: /etc/profile.d/gradle.sh
+        line: 'export PATH=${GRADLE_HOME}/bin:${PATH}'
+    - name: Source profile
+      shell: source /etc/profile.d/gradle.sh

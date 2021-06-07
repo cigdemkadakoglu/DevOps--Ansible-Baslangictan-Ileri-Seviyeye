@@ -1,0 +1,15 @@
+- name: Restart System Services
+  hosts: nodes1
+  become: true
+  become_method: sudo
+  become_user: root
+  tasks:
+    - name: Daemon-reload
+      command: /usr/bin/systemctl daemon-reload
+    - name: Restart rsyslog
+      command: /usr/bin/systemctl restart rsyslog
+    - name: Restart snmpd
+      command: /usr/bin/systemctl restart snmpd
+      ignore_errors: yes
+    - name: Restart sshd
+      command: /usr/bin/systemctl restart sshd

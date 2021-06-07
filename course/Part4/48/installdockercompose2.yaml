@@ -1,0 +1,16 @@
+- name: Install Docker-compose with variable
+  hosts: nodes
+  vars:
+    version: 1.29.1
+  tasks:
+    - name: Execute 'uname -s' command
+      register: unamesout
+      command: "uname -s"
+    - name: Execute 'uname -m' command
+      register: unamemout
+      command: "uname -m"
+    - Install Docker-compose
+      get_url:
+        url: https://github.com/docker/compose/releases/download/{{ version }}/docker-compose-{{ unamesout.stdout }}-{{ unamemout.stdout }}
+        dest: /usr/bin/docker-compose
+        mode: 755

@@ -1,0 +1,11 @@
+- name: Change the hostname
+  become: true
+  become_method: sudo
+  become_user: root
+  hosts: hostnameChange
+  tasks:
+    - name: Hostname
+      hostname:
+        name: myansible_client
+    - name: Reboot the host
+      reboot:

@@ -1,0 +1,5 @@
+- name: install nmap
+  hosts: nodes2
+  tasks:
+    - name: install nmap package with yum
+      yum: name=nmap state=present

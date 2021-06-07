@@ -1,0 +1,10 @@
+- name: Create a file
+  hosts: nodes
+  become: true
+  become_method: sudo
+  become_user: root
+  tasks:
+    - name: Create a file
+      file:
+        path: "/tmp/file.txt"
+        state: touch

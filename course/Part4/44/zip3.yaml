@@ -1,0 +1,9 @@
+- name: Zip example 3
+  hosts: nodes1
+  tasks:
+    - name: zip file&directory
+      archive:
+        path:
+          - /opt/ansible/ansible.txt
+        dest: /tmp/file.tar.bz2
+        format: bz2

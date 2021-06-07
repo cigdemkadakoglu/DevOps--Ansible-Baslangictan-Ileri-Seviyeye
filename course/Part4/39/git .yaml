@@ -1,0 +1,7 @@
+- name: Install Git
+  hosts: nodes
+  tasks:
+    - name: install git with yum
+      yum:
+        name: git
+        state: present

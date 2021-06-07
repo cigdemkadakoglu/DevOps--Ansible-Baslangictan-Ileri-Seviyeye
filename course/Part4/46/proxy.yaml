@@ -1,0 +1,8 @@
+- name: Install Docker-ce-cli
+  package:
+    name: docker-ce-cli-19.03.5
+    state: present
+  become: yes
+  environment:
+    http_proxy= http://x.x.x.x:8080
+    https_proxy= http://x.x.x.x:8080

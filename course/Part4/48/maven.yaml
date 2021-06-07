@@ -1,0 +1,24 @@
+- name: Install Maven
+  hosts: nodes
+  become: true
+  become_method: sudo
+  become_user: root
+  user: root
+  tasks:
+    - name: Download Maven tar
+      get_url:
+        url: https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+        dest: /opt/apache-maven-3.6.3-bin.tar.gz
+    - name: Create a directory
+      file:
+        path: /opt/maven
+        state: directory
+    - name: Extract Maven
+      command: tar xvf /opt/apache-maven-3.6.3-bin.tar.gz -C /opt/maven
+    - name: Update Profile
+      copy: content="export M2_HOME=/opt/maven/apache-maven-3.6.3 \n" dest=/etc/profile.d/maven.sh
+    - lineinfile:
+        path: /etc/profile.d/maven.sh
+        line: 'export PATH=${M2_HOME}/bin:${PATH}'
+    - name: Source profile
+      shell: source /etc/profile.d/maven.sh

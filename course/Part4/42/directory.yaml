@@ -1,0 +1,14 @@
+- name: Create a directory
+  hosts: nodes1
+  become: true
+  become_method: sudo
+  become_user: root
+  tasks:
+    - name: directory
+      file:
+        owner: root
+        group: daemon
+        mode: 777
+        recurse: yes
+        path: /tmp/ansible/ans
+        state: directory

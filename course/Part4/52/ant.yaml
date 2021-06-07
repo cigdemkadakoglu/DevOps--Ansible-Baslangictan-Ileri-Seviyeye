@@ -1,0 +1,20 @@
+- name: Install Apache Ant
+  hosts: nodes1
+  tasks:
+    - name: Download Apache Ant tar
+      get_url:
+        url: https://downloads.apache.org/ant/binaries/apache-ant-1.10.9-bin.tar.gz
+        dest: /tmp/apache-ant-1.10.9-bin.tar.gz
+    - name: Create a directory
+      file:
+        path: /opt/ant
+        state: directory
+    - name: Extract Ant
+      command: tar xvf /tmp/apache-ant-1.10.9-bin.tar.gz -C /opt/ant
+    - name: Update Profile
+      copy: content="export ANT_HOME=/opt/ant/apache-ant-1.10.9 \n" dest=/etc/profile.d/ant.sh
+    - lineinfile:
+        path: /etc/profile.d/ant.sh
+        line: 'export PATH=${ANT_HOME}/bin:${PATH}'
+    - name: Source profile
+      shell: source /etc/profile.d/ant.sh

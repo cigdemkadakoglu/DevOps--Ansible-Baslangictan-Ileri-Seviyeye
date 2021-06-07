@@ -1,0 +1,9 @@
+- name: Debug message 1
+  hosts: nodes
+  become: yes
+  become_method: sudo
+  become_user: root
+  tasks:
+    - name: Debug msg
+      debug:
+        msg: "Hello World!"

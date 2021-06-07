@@ -1,0 +1,19 @@
+- name: Check Docker & Docker-compose & Kubernetes
+  hosts: nodes
+  become_method: sudo
+  become_user: root
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: Check Docker
+      command: docker --version
+      ignore_errors: yes
+      register: docker_check
+    - name: Check Docker-compose
+      command: docker-compose --version
+      ignore_errors: yes
+      register: docker_compose_check
+    - name: Check Kubectl
+      command: kubectl --version
+      ignore_errors: yes
+      register: kubectl_check

@@ -1,0 +1,21 @@
+- name: Install httpd webserver
+  hosts: nodes2
+  become: true
+  tasks:
+    - name: install httpd
+      yum:
+        name: httpd
+        state: latest
+    - name: Start httpd
+      service:
+        name: httpd
+        state: started
+    - name: Open port 80
+      firewalld:
+        service: http
+        permanent: true
+        state: enabled
+    - name: Restart firewalld
+      service:
+        name: firewalld
+        state: restarted

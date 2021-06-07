@@ -1,0 +1,9 @@
+- name: Debugger example 1
+  hosts: all
+  tasks:
+    - name: Execute a command
+      ansible.builtin.command: "false"
+      debugger: on_failed
+    - name: Execute 2nd command
+      ansible.builtin.command: "true"
+      debugger: on_skipped

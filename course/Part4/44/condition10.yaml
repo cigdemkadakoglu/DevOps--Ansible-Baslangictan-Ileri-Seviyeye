@@ -1,0 +1,13 @@
+- name: Condition 10
+  hosts: nodes1
+  tasks:
+    - name: Check if Docker is installed
+      register: docker_installed
+      command: docker -v
+      ignore_errors: true
+    - name: Execute if Docker is installed
+      debug: var=docker_installed
+      when: docker_installed is succeeded
+    - name: Execute if Docker is not installed
+      debug: msg="Docker is not installed"
+      when: docker_installed is failed

@@ -1,0 +1,18 @@
+- name: Install Tomcat
+  gather_facts: no
+  vars:
+    tomcat_url: https://downloads.apache.org/tomcat/tomcat-8/v8.5.66/bin/apache-tomcat-8.5.66.tar.gz
+  hosts: nodes1
+  tasks:
+    - name: Download Tomcat tar
+      get_url:
+        url: "{{ tomcat_url }}"
+        dest: /opt/apache-tomcat-8.5.66.tar.gz
+    - name: Extract Tomcat
+      command: tar xvf /opt/apache-tomcat-8.5.66.tar.gz -C /opt
+    - name: Move Tomcat file directory
+      command: mv /opt/apache-tomcat-8.5.66 /opt/tomcat
+    - name: Change owner&mode&group&recursive
+      file: path=/opt/tomcat owner=root group=root mode=775 state=directory recurse=yes
+    - name: Start Tomcat
+      command: nohup /opt/tomcat/bin/startup.sh

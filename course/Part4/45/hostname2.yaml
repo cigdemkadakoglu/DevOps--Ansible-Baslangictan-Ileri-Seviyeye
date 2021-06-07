@@ -1,0 +1,13 @@
+- name: Change the hostname
+  hosts: nodes1
+  tasks:
+    - name: change
+      hostname:
+        name: managed-node1
+      register: changeHostname
+    - name: Reboot
+      reboot:
+      when: changeHostname.changed
+    - name: Command
+      command: "ls /opt"
+      when: changeHostname is skipped

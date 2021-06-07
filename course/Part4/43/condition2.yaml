@@ -1,0 +1,9 @@
+- name: Condition 2
+  hosts: nodes
+  tasks:
+    - name: Date
+      command: "date"
+      when: ansible_os_family != "Redhat"
+      register: dateout
+    - debug:
+        var: dateout.stdout_lines

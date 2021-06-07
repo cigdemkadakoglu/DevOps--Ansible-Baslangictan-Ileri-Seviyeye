@@ -1,0 +1,9 @@
+- name: Install package with loop
+  hosts: nodes2
+  become: true
+  vars:
+    packages: ['vim', 'git', 'curl']
+  tasks:
+    - name: Install packages
+      yum: name={{item}} state=latest
+      with_items: "{{ packages }}"

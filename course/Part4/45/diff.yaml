@@ -1,0 +1,11 @@
+- name: Diff mode
+  hosts: all
+  tasks:
+    - name: Copy file
+      ansible.builtin.copy:
+        src: /opt/devops.txt
+        dest: /tmp/devopsChange.txt
+        owner: root
+        group: daemon
+        mode: 755
+  diff: yes

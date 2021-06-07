@@ -1,0 +1,10 @@
+- name: Restart&Configure Ntp server
+  hosts: nodes1
+  tasks:
+    - name: Stop ntpd
+      command: /usr/bin/systemctl stop ntpd
+    - name: Configure ntp server
+      command: /sbin/ntpdate -uv 192.168.1.53
+      ignore_errors: yes
+    - name: Start ntpd
+      command: /usr/bin/systemctl start ntpd

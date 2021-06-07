@@ -1,0 +1,47 @@
+- name: Install Docker full
+  hosts: nodes
+  become: true
+  become_method: sudo
+  become_user: root
+  tasks:
+    - name: Install yum-utils
+      yum:
+        name: yum-utils
+        state: latest
+    - name: Install device-mapper-persistent-data
+      yum:
+        name: device-mapper-persistent-data
+        state: latest
+    - name: Install lvm2
+      yum:
+        name: lvm2
+        state: latest
+    - name: Add Docker Repo
+      get_url:
+        url: https://download.docker.com/linux/centos/docker-ce.repo
+        dest: /etc/yum.repos.d/docker-ce.repo
+    - name: Enable Docker Edge Repo
+      ini_file:
+        dest: /etc/yum.repos.d/docker-ce.repo
+        section: 'docker-ce-edge'
+        option: enabled
+        value: '0'
+    - name: Enable Docker Test Repo
+      ini_file:
+        dest: /etc/yum.repos.d/docker-ce.repo
+        section: 'docker-ce-test'
+        option: enabled
+        value: '0'
+    - name: Install Docker-ce-cli
+      package:
+        name: docker-ce-cli-19.03.5
+        state: present
+    - name: Install Docker-ce
+      package:
+        name: docker-ce-19.03.5
+        state: present
+    - name: Start Docker Service & Enabled
+      service:
+        name: docker
+        state: started
+        enabled: yes
